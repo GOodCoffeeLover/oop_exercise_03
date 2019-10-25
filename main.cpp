@@ -36,9 +36,9 @@ int main(){
 						std::vector<point> ppp;
 						point p;
 						for(int i=0; i<n; ++i){
-							std::cout<<"Input vertex x cootdinate."<<std::endl;
+							std::cout<<"Input vertex x and y coordinates."<<std::endl;
 							std::cin>>p.x;
-							std::cout<<"Input vertex y cootdinate."<<std::endl;
+							//std::cout<<"Input vertex y cootdinate."<<std::endl;
 							std::cin>>p.y;
 							ppp.push_back(p);
 						}
@@ -54,7 +54,6 @@ int main(){
 						std::cout<<"Input number of square vertex (3 or 4)."<<std::endl;
 						int n;
 						std::cin>>n;
-					//	std::cout<<n<<std::endl;
 						if(n!=3 && n!=4){
 							std::cout<<"Wrong number of vertex."<<std::endl;
 							break;
@@ -62,9 +61,9 @@ int main(){
 						std::vector<point> ppp;
 						point p;
 						for(int i=0; i<n; ++i){
-							std::cout<<"Input vertex x cootdinate."<<std::endl;
+							std::cout<<"Input vertex x and y cooedinates."<<std::endl;
 							std::cin>>p.x;
-							std::cout<<"Input vertex y cootdinate."<<std::endl;
+							//std::cout<<"Input vertex y cootdinate."<<std::endl;
 							std::cin>>p.y;
 							ppp.push_back(p);
 						}
@@ -87,9 +86,9 @@ int main(){
 						std::vector<point> ppp;
 						point p;
 						for(int i=0; i<n; ++i){
-							std::cout<<"Input vertex x cootdinate."<<std::endl;
+							std::cout<<"Input vertex x and y coordinates."<<std::endl;
 							std::cin>>p.x;
-							std::cout<<"Input vertex y cootdinate."<<std::endl;
+							//std::cout<<"Input vertex y cootdinate."<<std::endl;
 							std::cin>>p.y;
 							ppp.push_back(p);
 						}
@@ -112,9 +111,9 @@ int main(){
 						std::vector<point> ppp;
 						point p;
 						for(int i=0; i<n; ++i){
-							std::cout<<"Input vertex x cootdinate."<<std::endl;
+							std::cout<<"Input vertex x and y coordinates."<<std::endl;
 							std::cin>>p.x;
-							std::cout<<"Input vertex y cootdinate."<<std::endl;
+							//std::cout<<"Input vertex y cootdinate."<<std::endl;
 							std::cin>>p.y;
 							ppp.push_back(p);
 						}
@@ -131,7 +130,7 @@ int main(){
 			}
 			case 3:{
 				std::cout<<"figures: "<<std::endl;
-				for(int i=0; i<figures.size(); ++i){	std::cout<<i+1<<"."; figures[i]->print_info();}//std::cout<<*figures[i]<<std::endl;}		
+				for(int i=0; i<figures.size(); ++i){	std::cout<<i+1<<"."; figures[i]->print_info();}// std::cout<<*figures[i]<<std::endl;}		
 				break;
 			}
 			case 4:{
@@ -140,10 +139,11 @@ int main(){
 				std::cin>>a;
 				if(!(a-1>=0  && a-1<figures.size())){ std::cout<<"Wrong index."<<std::endl; break;}
 				figures[a]->print_info();
+				//std::cout<<*figures[a];
 				break;
 			}
 			default:
-			 std::cout<<"Wrong choose"<<std::endl;
+			 std::cout<<"Wrong choose."<<std::endl;
 		}
 		std::cout<<">>";
 		std::cin>>status;
