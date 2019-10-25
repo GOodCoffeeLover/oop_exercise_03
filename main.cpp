@@ -149,6 +149,8 @@ int main(){
 			}
 			case 6 :{
 				int a;
+				std::cout<<"Input index of figure"<<std::endl;
+				std::cin>>a;
 				if(a<0 || a>=figures.size()){ std::cout<<"Wrong index"<<std::endl; break;}
 				figures.erase(figures.begin() +a );	
 			}
