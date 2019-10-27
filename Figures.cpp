@@ -295,8 +295,10 @@ class Trapeze : public Figure {
 				pnts.push_back(fth);
 			}
 		}
-		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j) if((cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 ||
-		cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])<-0.999) 
+		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j) 
+		if((
+		cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 
+		|| cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])<-0.999) 
 		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=-1.0
 		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=1.0 
 		&& size_points(pnts[(j)%4], pnts[(j+1)%4]) == size_points(pnts[(j+3)%4], pnts[(j+2)%4]) ){
@@ -323,7 +325,7 @@ class Trapeze : public Figure {
 				pnts.push_back(fth);
 			}
 		}
-		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j) if((cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 ||
+		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j){ if((cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 ||
 		cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])<-0.999) 
 		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=-1.0
 		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=1.0 
@@ -331,7 +333,7 @@ class Trapeze : public Figure {
 				for(int i=j; i<j+pnts.size(); ++i) points.push_back(pnts[i%4]);
 				name="Trapeze";break;
 		}
-	}
+	}}
 };
 
 
