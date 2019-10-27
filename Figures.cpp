@@ -294,29 +294,44 @@ class Trapeze : public Figure {
 				fth.x=pnts[0].x + pnts[2].x - pnts[1].x;
 				pnts.push_back(fth);
 			}
-		if(pnts.size()==4) if(cos_points( pnts[1], pnts[2], pnts[0], pnts[3])==1.0 && size_points(pnts[0], pnts[1]) == size_points(pnts[3], pnts[2]) ){
-				for(int i=0; i<pnts.size(); ++i) points.push_back(pnts[i]);
-				name="Trapeze";
-		}else if(cos_points( pnts[3], pnts[1], pnts[2], pnts[0])==1.0 && size_points(pnts[0], pnts[1]) == size_points(pnts[3], pnts[2]) ){
-				for(int i=0; i<pnts.size(); ++i) points.push_back(pnts[i]);
-				name="Trapeze";
-			}	
-		}	
+		}
+		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j) if((cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 ||
+		cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])<-0.999) 
+		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=-1.0
+		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=1.0 
+		&& size_points(pnts[(j)%4], pnts[(j+1)%4]) == size_points(pnts[(j+3)%4], pnts[(j+2)%4]) ){
+				for(int i=j; i<j+pnts.size(); ++i) points.push_back(pnts[i%4]);
+				name="Trapeze";break;
+		}
 	}
-	
-		void reinitialize(std::vector<point> pnts) override {
-			if(pnts.size()==3 && pnts[0].y != pnts[1].y && pnts[1].y == pnts[2].y){
+	void reinitialize(std::vector<point> pnts) override {//трапеция по трём точкам может быть только с основаниями паралельными оси ОХ.
+		if(pnts.size()==3){
+			if(pnts[0].y != pnts[1].y && pnts[1].y == pnts[2].y){
 				point fth;
 				fth.y=pnts[0].y;
 				fth.x=pnts[2].x + pnts[1].x - pnts[0].x;
 				pnts.push_back(fth);
+			}else if(pnts[0].y == pnts[1].y && pnts[1].y != pnts[2].y){
+				point fth;
+				fth.y=pnts[2].y;
+				fth.x=pnts[0].x + pnts[1].x - pnts[2].x;
+				pnts.push_back(fth);
+			}if(pnts[0].y == pnts[2].y && pnts[1].y != pnts[2].y){
+				point fth;
+				fth.y=pnts[1].y;
+				fth.x=pnts[0].x + pnts[2].x - pnts[1].x;
+				pnts.push_back(fth);
 			}
-			
-			if(pnts.size()==4 && cos_points( pnts[1], pnts[2], pnts[0], pnts[3])==1.0 && size_points(pnts[0], pnts[1]) == size_points(pnts[3], pnts[2]) ){
-				for(int i=0; i<pnts.size(); ++i) points.push_back(pnts[i]);
-				name="Trapeze";
-			}		
 		}
+		if(pnts.size()==4) for(int j=0; j<pnts.size(); ++j) if((cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])>0.999 ||
+		cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+0)%4], pnts[(j+3)%4])<-0.999) 
+		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=-1.0
+		&& cos_points( pnts[(j+1)%4], pnts[(j+2)%4], pnts[(j+1)%4], pnts[(j)%4])!=1.0 
+		&& size_points(pnts[(j)%4], pnts[(j+1)%4]) == size_points(pnts[(j+3)%4], pnts[(j+2)%4]) ){
+				for(int i=j; i<j+pnts.size(); ++i) points.push_back(pnts[i%4]);
+				name="Trapeze";break;
+		}
+	}
 };
 
 
